@@ -1,9 +1,15 @@
 import { getNumbers, postNumbers, replaceNumber, deleteNumber } from './services'
 import { useEffect, useState } from 'react'
+import './App.css'
 
-const DeleteButton = ({person, persons, setPersons}) => {
+const DeleteButton = ({person, persons, setPersons, setErrorMessage}) => {
   const handleClick = () => {
-    deleteNumber(person)
+    deleteNumber(person).catch(error => {
+      setErrorMessage(`Information of ${person.name} has already been removed from server`)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
+    })
     setPersons(persons.filter(element => element.id !== person.id))
   }
 
@@ -14,7 +20,7 @@ const DeleteButton = ({person, persons, setPersons}) => {
   )
 }
 
-const Persons = ({persons, filter, setPersons}) =>
+const Persons = ({persons, filter, setPersons, setErrorMessage}) =>
   <>
     {
       persons.filter(
@@ -22,7 +28,7 @@ const Persons = ({persons, filter, setPersons}) =>
       ).map(
         person => 
           <p key={person.name}>{person.name} {person.number}
-            <DeleteButton person={person} persons={persons} setPersons={setPersons} />
+            <DeleteButton person={person} persons={persons} setPersons={setPersons} setErrorMessage={setErrorMessage}/>
           </p>
       )
     }
@@ -42,7 +48,7 @@ const Filter = ({setFilter}) => {
   )
 }
 
-const PersonForm = ({persons, setPersons}) => {
+const PersonForm = ({persons, setPersons, setMessage}) => {
   const [newName, setNewName] = useState('')
   const [number, setNumber] = useState('')
 
@@ -56,7 +62,14 @@ const PersonForm = ({persons, setPersons}) => {
     if (foundPerson === undefined) {
       const id = persons.length+1
       const newPerson = { name: newName, number: number, id: id}
-      postNumbers(newPerson).then(response => setPersons([...persons].concat(response)))
+      postNumbers(newPerson)
+        .then(response => {
+          setPersons([...persons].concat(response))
+          setMessage(`Added ${newName}`)
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000)
+        })
     } else {
       const newPerson = { name: newName, number: number, id: foundPerson.id}
       replaceNumber(newPerson)
@@ -81,23 +94,51 @@ const PersonForm = ({persons, setPersons}) => {
   )
 }
 
+const Notification = ({message}) => {
+  if (message == null) {
+    return null
+  }
+
+  return (
+    <div className='person-added-notification'>
+      {message}
+    </div>
+  )
+}
+
+const ErrorNotification = ({message}) => {
+  if (message == null) {
+    return null
+  }
+
+  return (
+    <div className='error'>
+      {message}
+    </div>
+  )
+}
+
 const App = () => {
   const [persons, setPersons] = useState([])
   const [filter, setFilter] = useState('')
+  const [message, setMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
     getNumbers()
-    .then(result =>setPersons(result))
+    .then(result => setPersons(result))
   },[])
 
   return (
     <div>
       <h2>Phonebook</h2>
+        <ErrorNotification message={errorMessage}/>
+        <Notification message={message}/>
         <Filter setFilter={setFilter} />
       <h3>Add a new</h3>
-        <PersonForm persons={persons} setPersons={setPersons}/>
+        <PersonForm persons={persons} setPersons={setPersons} setMessage={setMessage} />
       <h3>Numbers</h3>
-        <Persons persons={persons} filter={filter} setPersons={setPersons}/>
+        <Persons persons={persons} filter={filter} setPersons={setPersons} setErrorMessage={setErrorMessage}/>
     </div>
   )
 }

@@ -20,7 +20,8 @@ const replaceNumber = (person) => {
 
 const deleteNumber = (person) => {
     if (window.confirm(`Delete ${person.name}?`)) {
-        axios.delete(`${BASE_URL}/${person.id}`)
+        const request = axios.delete(`${BASE_URL}/${person.id}`)
+        return request.then(response => response.data)
     }
 }
 
