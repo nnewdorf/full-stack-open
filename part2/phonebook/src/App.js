@@ -4,13 +4,16 @@ import './App.css'
 
 const DeleteButton = ({person, persons, setPersons, setErrorMessage}) => {
   const handleClick = () => {
-    deleteNumber(person).catch(error => {
-      setErrorMessage(`Information of ${person.name} has already been removed from server`)
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 5000)
-    })
-    setPersons(persons.filter(element => element.id !== person.id))
+    const confirmationString = `Delete ${person.name}?`
+    if (window.confirm(confirmationString)) {
+      deleteNumber(person).catch(error => {
+        setErrorMessage(`Information of ${person.name} has already been removed from server`)
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 5000)
+      })
+      setPersons(persons.filter(element => element.id !== person.id))
+    }
   }
 
   return(
@@ -48,7 +51,7 @@ const Filter = ({setFilter}) => {
   )
 }
 
-const PersonForm = ({persons, setPersons, setMessage}) => {
+const PersonForm = ({persons, setPersons, setMessage, setErrorMessage}) => {
   const [newName, setNewName] = useState('')
   const [number, setNumber] = useState('')
 
@@ -70,10 +73,19 @@ const PersonForm = ({persons, setPersons, setMessage}) => {
             setMessage(null)
           }, 5000)
         })
+        .catch(error => {
+          setErrorMessage(error.response.data.error)
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 5000)
+        })
     } else {
-      const newPerson = { name: newName, number: number, id: foundPerson.id}
-      replaceNumber(newPerson)
-      setPersons(persons.map(person => person.id === foundPerson.id ? newPerson : person))
+      const confirmationString = `${newName} is already added to the phonebook, replace the old number with the new one?`
+      if (window.confirm(confirmationString)) {
+        const newPerson = { name: newName, number: number, id: foundPerson.id}
+        replaceNumber(newPerson)
+        setPersons(persons.map(person => person.id === foundPerson.id ? newPerson : person))
+      }
     }
   }
 
@@ -136,7 +148,7 @@ const App = () => {
         <Notification message={message}/>
         <Filter setFilter={setFilter} />
       <h3>Add a new</h3>
-        <PersonForm persons={persons} setPersons={setPersons} setMessage={setMessage} />
+        <PersonForm persons={persons} setPersons={setPersons} setMessage={setMessage} setErrorMessage={setErrorMessage}/>
       <h3>Numbers</h3>
         <Persons persons={persons} filter={filter} setPersons={setPersons} setErrorMessage={setErrorMessage}/>
     </div>
