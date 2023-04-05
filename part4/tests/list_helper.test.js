@@ -102,3 +102,55 @@ describe('favorite blog', () => {
     expect(result).toEqual({})
   })
 })
+
+describe('most blogs', () => {
+  test('when list has only one blog, equals that blogs author', () => {
+    const result = listHelper.mostBlogs(listWithOneBlog)
+    expect(result).toEqual({
+      'author': 'Edsger W. Dijkstra',
+      'blogs': 1
+    })
+  })
+
+  test('when list has more than one blog, equals author with the most blogs written', () => {
+    const result = listHelper.mostBlogs(listWithManyBlogs)
+    expect(result).toEqual({
+      'author': 'Robert C. Martin',
+      'blogs': 3
+    })
+  })
+
+  test('when list has no blogs, equals empty strings for author and 0 for number of blogs', () => {
+    const result = listHelper.mostBlogs(emptyList)
+    expect(result).toEqual({
+      'author': '',
+      'blogs': 0
+    })
+  })
+})
+
+describe('most likes', () => {
+  test('when list has only one blog, equals that blogs author and likes', () => {
+    const result = listHelper.mostLikes(listWithOneBlog)
+    expect(result).toEqual({
+      'author': 'Edsger W. Dijkstra',
+      'likes': 5
+    })
+  })
+
+  test('when list has more than one blog, equals author with the most cumulative likes', () => {
+    const result = listHelper.mostLikes(listWithManyBlogs)
+    expect(result).toEqual({
+      'author': 'Edsger W. Dijkstra',
+      'likes': 17
+    })
+  })
+
+  test('when list has no blogs, equals empty strings for author and 0 for number of likes', () => {
+    const result = listHelper.mostLikes(emptyList)
+    expect(result).toEqual({
+      'author': '',
+      'likes': 0
+    })
+  })
+})
