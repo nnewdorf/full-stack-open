@@ -4,7 +4,7 @@ import blogService from './services/blogs'
 import loginService from './services/login'
 import './App.css'
 
-const LogInForm = ({setUser}) => {
+const LogInForm = ({ setUser }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -37,7 +37,7 @@ const LogInForm = ({setUser}) => {
             type='text'
             value={username}
             name='Username'
-            onChange={({target}) => setUsername(target.value)}
+            onChange={({ target }) => setUsername(target.value)}
           />
         </div>
         <div>
@@ -46,7 +46,7 @@ const LogInForm = ({setUser}) => {
             type='text'
             value={password}
             name='Password'
-            onChange={({target}) => setPassword(target.value)}
+            onChange={({ target }) => setPassword(target.value)}
           />
         </div>
         <button type='submit'>login</button>
@@ -55,12 +55,12 @@ const LogInForm = ({setUser}) => {
   )
 }
 
-const LoggedInMessage = ({user, setUser}) => {
+const LoggedInMessage = ({ user, setUser }) => {
   const handleClick = () => {
     window.localStorage.removeItem('loggedBlogAppUser')
     setUser(null)
   }
-  
+
   return (
     <div>
       {user.name} logged in
@@ -71,7 +71,7 @@ const LoggedInMessage = ({user, setUser}) => {
   )
 }
 
-const NewBlogForm = ({blogs, setBlogs, setMessage, setMessageClass}) => {
+const NewBlogForm = ({ addBlog, setMessage, setMessageClass }) => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
@@ -83,9 +83,10 @@ const NewBlogForm = ({blogs, setBlogs, setMessage, setMessageClass}) => {
       const newBlog = {
         title, author, url
       }
-
-      await blogService.create(newBlog)
-      setBlogs(blogs.concat([newBlog]))
+      addBlog(newBlog)
+      setTitle('')
+      setAuthor('')
+      setUrl('')
       setMessage(`a new blog ${title} by ${author} added`)
       setMessageClass('blog-added-notification')
       setTimeout(() => {
@@ -110,7 +111,7 @@ const NewBlogForm = ({blogs, setBlogs, setMessage, setMessageClass}) => {
             type='text'
             value={title}
             name='Title'
-            onChange={({target}) => setTitle(target.value)}
+            onChange={({ target }) => setTitle(target.value)}
           />
         </div>
         <div>
@@ -119,7 +120,7 @@ const NewBlogForm = ({blogs, setBlogs, setMessage, setMessageClass}) => {
             type='text'
             value={author}
             name='Author'
-            onChange={({target}) => setAuthor(target.value)}
+            onChange={({ target }) => setAuthor(target.value)}
           />
         </div>
         <div>
@@ -128,7 +129,7 @@ const NewBlogForm = ({blogs, setBlogs, setMessage, setMessageClass}) => {
             type='text'
             value={url}
             name='URL'
-            onChange={({target}) => setUrl(target.value)}
+            onChange={({ target }) => setUrl(target.value)}
           />
         </div>
         <button type='submit'>create</button>
@@ -137,7 +138,7 @@ const NewBlogForm = ({blogs, setBlogs, setMessage, setMessageClass}) => {
   )
 }
 
-const Message = ({message, messageClass}) => {
+const Message = ({ message, messageClass }) => {
   if(message) {
     return (
       <div className={messageClass}>
@@ -149,6 +150,29 @@ const Message = ({message, messageClass}) => {
   }
 }
 
+const Togglable = (props) => {
+  const [visible, setVisible] = useState(false)
+
+  const hideWhenVisible = { display: visible ? 'none' : '' }
+  const showWhenVisible = { display: visible ? '' : 'none' }
+
+  const toggleVisibility = () => {
+    setVisible(!visible)
+  }
+
+  return (
+    <div>
+      <div style={hideWhenVisible}>
+        <button onClick={toggleVisibility}>{props.buttonLabel}</button>
+      </div>
+      <div style={showWhenVisible}>
+        {props.children}
+        <button onClick={toggleVisibility}>cancel</button>
+      </div>
+    </div>
+  )
+}
+
 const App = () => {
   const [blogs, setBlogs] = useState([])
   const [user, setUser] = useState(null)
@@ -156,9 +180,13 @@ const App = () => {
   const [messageClass, setMessageClass] = useState('')
 
   useEffect(() => {
-    blogService.getAll().then(blogs =>
-      setBlogs( blogs )
-    )  
+    const fetchBlogs = async () => {
+      let responseBlogs = await blogService.getAll()
+      responseBlogs = responseBlogs.sort((a,b) => a.likes > b.likes)
+      setBlogs( responseBlogs )
+    }
+
+    fetchBlogs()
   }, [])
 
   useEffect(() => {
@@ -170,24 +198,70 @@ const App = () => {
     }
   }, [])
 
+  const addBlog = async (newBlog) => {
+    const returnedBlog = await blogService.create(newBlog)
+    returnedBlog.user = {
+      id: returnedBlog.user,
+      username: user.username,
+      name: user.name
+    }
+    console.log(returnedBlog)
+    setBlogs(blogs.concat(returnedBlog))
+  }
+
+  const likeBlog = async (blog) => {
+    const replacementBlog = {
+      user: blog.user.id,
+      likes: (blog.likes + 1),
+      author: blog.author,
+      title: blog.title,
+      url: blog.url
+    }
+
+    await blogService.update(replacementBlog, blog.id)
+    let updatedBlogs = [...blogs]
+    const updatedBlog = updatedBlogs.find(b => b.id === blog.id)
+    updatedBlog.likes++
+    updatedBlogs = updatedBlogs.sort((a,b) => a.likes > b.likes)
+    setBlogs(updatedBlogs)
+  }
+
+  const isUserOwner = username => user.username === username
+
+  const removeBlog = async (blog) => {
+    if(window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) {
+      const idToRemove = blog.id
+      await blogService.remove(idToRemove)
+      const newBlogs = blogs.filter(b => b.id !== idToRemove)
+      setBlogs(newBlogs)
+    }
+  }
+
   if(user === null) {
     return (
       <LogInForm setUser={setUser}/>
     )
   } else {
     return (
-      <div>      
+      <div>
         <h2>blogs</h2>
         <Message message={message} messageClass={messageClass} />
         <LoggedInMessage user={user} setUser={setUser} />
-        <NewBlogForm
-          blogs={blogs}
-          setBlogs={setBlogs} 
-          setMessage={setMessage}
-          setMessageClass={setMessageClass}
-        />
+        <Togglable buttonLabel='create new blog'>
+          <NewBlogForm
+            addBlog={addBlog}
+            setMessage={setMessage}
+            setMessageClass={setMessageClass}
+          />
+        </Togglable>
         {blogs.map(blog =>
-          <Blog key={blog.id} blog={blog} />
+          <Blog
+            key={blog.id}
+            blog={blog}
+            isUserOwner={isUserOwner}
+            likeBlog={likeBlog}
+            removeBlog={removeBlog}
+          />
         )}
       </div>
     )
