@@ -18,7 +18,7 @@ const Blog = ({ blog, isUserOwner, likeBlog, removeBlog }) => {
         {blog.title} {blog.author} {' '}
         <button onClick={() => setVisible(!visible)}>{visible ? 'hide' : 'view'}</button>
       </div>
-      <div style={{ display: visible ? '' : 'none' }}>
+      <div style={{ display: visible ? '' : 'none' }} className='togglable'>
         <div><a href={blog.url}>{blog.url}</a></div>
         <div>likes {blog.likes} <button onClick={() => likeBlog(blog)}>like</button></div>
         <div>{blog.user.name}</div>
