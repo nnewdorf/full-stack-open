@@ -36,6 +36,7 @@ const LogInForm = ({ setUser }) => {
           username
           <input
             type='text'
+            id='username'
             value={username}
             name='Username'
             onChange={({ target }) => setUsername(target.value)}
@@ -45,12 +46,13 @@ const LogInForm = ({ setUser }) => {
           password
           <input
             type='text'
+            id='password'
             value={password}
             name='Password'
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <button type='submit'>login</button>
+        <button type='submit' id='login-button'>login</button>
       </form>
     </div>
   )
@@ -156,7 +158,6 @@ const App = () => {
     let updatedBlogs = [...blogs]
     const updatedBlog = updatedBlogs.find(b => b.id === blog.id)
     updatedBlog.likes++
-    updatedBlogs = updatedBlogs.sort((a,b) => a.likes > b.likes)
     setBlogs(updatedBlogs)
   }
 
@@ -188,7 +189,7 @@ const App = () => {
             setMessageClass={setMessageClass}
           />
         </Togglable>
-        {blogs.map(blog =>
+        {blogs.sort((a,b) => b.likes - a.likes).map(blog =>
           <Blog
             key={blog.id}
             blog={blog}
