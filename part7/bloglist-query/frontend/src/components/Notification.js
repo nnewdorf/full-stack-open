@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useNotificationDispatch, useNotificationValue } from '../contexts/NotificationContext'
-import './Notification.css'
+import { Alert } from '@mui/material'
 
 const Notification = () => {
   const notification = useNotificationValue()
@@ -14,8 +14,10 @@ const Notification = () => {
 
   if(notification !== null) {
     return (
-      <div className={notification.class}>
-        {notification.message}
+      <div>
+        <Alert severity={notification.class}>
+          {notification.message}
+        </Alert>
       </div>
     )
   } else {

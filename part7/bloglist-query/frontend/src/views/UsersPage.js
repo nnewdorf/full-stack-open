@@ -1,5 +1,14 @@
 import { useQuery } from 'react-query'
+import { Link } from 'react-router-dom'
 import userService from '../services/users'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow
+} from '@mui/material'
+
 
 const UsersPage = () => {
   const usersResult = useQuery('users', userService.getAll, { refetchOnWindowFocus: false })
@@ -13,22 +22,26 @@ const UsersPage = () => {
   const users = usersResult.data
 
   const usersTable =
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th>blogs created</th>
-        </tr>
-      </thead>
-      <tbody>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>Username</TableCell>
+          <TableCell>Blogs Created</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
         {users.map(user =>
-          <tr key={user.id}>
-            <td>{user.username}</td>
-            <td>{user.blogs.length}</td>
-          </tr>
+          <TableRow key={user.id}>
+            <TableCell>
+              <Link to={`/users/${user.id}`}>
+                {user.username}
+              </Link>
+            </TableCell>
+            <TableCell>{user.blogs.length}</TableCell>
+          </TableRow>
         )}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
 
   return (
     <div>

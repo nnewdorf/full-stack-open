@@ -1,4 +1,9 @@
 import { useState } from 'react'
+import {
+  Box,
+  Button,
+  TextField
+} from '@mui/material'
 import { useUserDispatch } from '../contexts/UserContext'
 import blogsService from '../services/blogs'
 import loginService from '../services/login'
@@ -28,32 +33,41 @@ const LogInForm = () => {
   }
 
   return (
-    <div>
-      <h2>log in to application</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          username
-          <input
-            type='text'
-            id='username'
-            value={username}
-            name='Username'
-            onChange={({ target }) => setUsername(target.value)}
-          />
-        </div>
-        <div>
-          password
-          <input
-            type='text'
-            id='password'
-            value={password}
-            name='Password'
-            onChange={({ target }) => setPassword(target.value)}
-          />
-        </div>
-        <button type='submit' id='login-button'>login</button>
-      </form>
-    </div>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+    >
+      <div>
+        <h2>Log In To Application</h2>
+        <form onSubmit={handleLogin}>
+          <div>
+            <TextField
+              type='text'
+              id='username'
+              value={username}
+              name='Username'
+              label='Username'
+              margin='dense'
+              onChange={({ target }) => setUsername(target.value)}
+            />
+          </div>
+          <div>
+            <TextField
+              type='password'
+              id='password'
+              value={password}
+              name='Password'
+              label='Password'
+              margin='dense'
+              onChange={({ target }) => setPassword(target.value)}
+            />
+          </div>
+          <Button type='submit' id='login-button'>login</Button>
+        </form>
+      </div>
+    </Box>
   )
 }
 

@@ -1,8 +1,13 @@
 import { useState } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
+import {
+  Button,
+  TextField
+} from '@mui/material'
 import blogService from '../services/blogs'
 import { useNotificationDispatch } from '../contexts/NotificationContext'
 import { useUserValue } from '../contexts/UserContext'
+
 
 const NewBlogForm = () => {
   const [title, setTitle] = useState('')
@@ -41,7 +46,7 @@ const NewBlogForm = () => {
         type: 'SET',
         payload: {
           message: `a new blog ${title} by ${author} added`,
-          class: 'blog-added-notification'
+          class: 'success'
         }
       })
     } catch (exception) {
@@ -57,36 +62,39 @@ const NewBlogForm = () => {
 
   return (
     <div>
-      <h2>create new</h2>
+      <h2>Create New</h2>
       <form onSubmit={handleCreate}>
         <div>
-          title:
-          <input
+          <TextField
             type='text'
             value={title}
             name='Title'
+            label='Title'
+            margin='dense'
             onChange={({ target }) => setTitle(target.value)}
           />
         </div>
         <div>
-          author:
-          <input
+          <TextField
             type='text'
             value={author}
             name='Author'
+            label='Author'
+            margin='dense'
             onChange={({ target }) => setAuthor(target.value)}
           />
         </div>
         <div>
-          url:
-          <input
+          <TextField
             type='text'
             value={url}
             name='URL'
+            label='Url'
+            margin='dense'
             onChange={({ target }) => setUrl(target.value)}
           />
         </div>
-        <button type='submit'>create</button>
+        <Button type='submit'>create</Button>
       </form>
     </div>
   )
