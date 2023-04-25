@@ -59,6 +59,8 @@ const Authors = (props) => {
   
   if (result.loading) {
     return <div>Loading...</div>
+  } else if (result.error) {
+    console.log(result.error)
   }
 
   const authors = result.data.allAuthors || []
