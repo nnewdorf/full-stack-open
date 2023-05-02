@@ -1,0 +1,21 @@
+Script started on 2023-05-02 16:48:26-04:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="94" LINES="47"]
+[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[00m$ exec [K[K[K[K[Kdocker [K[K[K[K[K[K[Kps -a[K[K[K[K[Kdocker ps -a
+[?2004lCONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS                      PORTS                                         NAMES
+04d15ea3ebf1   mongo              "docker-entrypoint.s…"   25 minutes ago   Up 12 minutes               0.0.0.0:3456->27017/tcp, :::3456->27017/tcp   todo-backend-mongo-1
+0f8aaba27fc5   redis              "docker-entrypoint.s…"   25 minutes ago   Up 12 minutes               0.0.0.0:6379->6379/tcp, :::6379->6379/tcp     todo-backend-redis-1
+05f8e5954b1a   todo-backend       "docker-entrypoint.s…"   26 hours ago     Exited (137) 26 hours ago                                                 hardcore_knuth
+26dd563c2d81   express-server     "docker-entrypoint.s…"   27 hours ago     Exited (137) 27 hours ago                                                 happy_bohr
+1eb8d3f0f8ef   fs-hello-world     "docker-entrypoint.s…"   27 hours ago     Exited (0) 27 hours ago                                                   jolly_tharp
+6502c34834af   node:16            "docker-entrypoint.s…"   28 hours ago     Exited (0) 28 hours ago                                                   hello-node
+715e0bd3394d   hello-node-world   "bash"                   28 hours ago     Exited (127) 28 hours ago                                                 reverent_chatelet
+29a2221cc370   ubuntu             "bash"                   28 hours ago     Exited (0) 28 hours ago                                                   sweet_elion
+47e32356202c   hello-world        "/hello"                 28 hours ago     Exited (0) 28 hours ago                                                   nice_curie
+[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[00m$ docker ps
+[?2004lCONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+04d15ea3ebf1   mongo     "docker-entrypoint.s…"   25 minutes ago   Up 12 minutes   0.0.0.0:3456->27017/tcp, :::3456->27017/tcp   todo-backend-mongo-1
+0f8aaba27fc5   redis     "docker-entrypoint.s…"   25 minutes ago   Up 12 minutes   0.0.0.0:6379->6379/tcp, :::6379->6379/tcp     todo-backend-redis-1
+[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[00m$ docek[K[Kker exec todo-backend-redis-1 bash
+[?2004l[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[00m$ docker exec todo-backend-redis-1 bash[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexit
+[?2004lexit
+
+Script done on 2023-05-02 16:49:15-04:00 [COMMAND_EXIT_CODE="0"]

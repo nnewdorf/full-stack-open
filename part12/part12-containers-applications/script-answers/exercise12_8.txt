@@ -1,0 +1,166 @@
+Script started on 2023-05-02 15:46:03-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="94" LINES="49"]
+[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications[00m$ MONGO_URL=mongodb://root:example@localhost:3456/the_database npm run dev[C[C[C[C[46Pvim docker-compose.dev.yml[C[C[C[Cls[Kdocker compose -f docker-compose.dev.yml down --volumes[C[C[C[CMONGO_URL=mongodb://root:example@localhost:3456/the_database npm run dev[C[C[C[C[45Pvim docker-compose.dev.yml [C[C[C[CMONGO_URL=mongodb://root:example@localhost:3456/the_database npm run dev[C[C[C[C[17Pdocker compose -f docker-compose.dev.yml down --volumes[K[K[K[K[K[K[K[K[K[K[K[K[K[Kup
+[?2004lstat /home/nnewdorf/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/docker-compose.dev.yml: no such file or directory
+[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications[00m$ cd bac[K[K[K
+dockerfile-example/ script-answers/     todo-app/           
+]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications[00m$ cd todo-app/todo-backend/
+[?2004l[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[00m$ cd todo-app/todo-backend/docker compose -f docker-compose.dev.yml up
+[?2004l[1A[1B[0G[?25l[+] Running 0/0
+ ⠋ Network todo-backend_default  Creating                                                [34m0.1s [0m
+[?25h[1A[1A[0G[?25l[34m[+] Running 1/1[0m
+ [32m✔[0m Network todo-backend_default    [32mCreated[0m                                               [34m0.1s [0m
+ ⠋ Container todo-backend-mongo-1  Creating                                              [34m0.1s [0m
+[?25h[1A[1A[1A[0G[?25l[34m[+] Running 2/2[0m
+ [32m✔[0m Network todo-backend_default    [32mCreated[0m                                               [34m0.1s [0m
+ [32m✔[0m Container todo-backend-mongo-1  [32mCreated[0m                                               [34m0.1s [0m
+[?25hAttaching to todo-backend-mongo-1
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.070+00:00"},"s":"I",  "c":"NETWORK",  "id":4915701, "ctx":"main","msg":"Initialized wire specification","attr":{"spec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":17},"incomingInternalClient":{"minWireVersion":0,"maxWireVersion":17},"outgoing":{"minWireVersion":6,"maxWireVersion":17},"isInternalClient":true}}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.070+00:00"},"s":"I",  "c":"CONTROL",  "id":23285,   "ctx":"main","msg":"Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'"}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.072+00:00"},"s":"I",  "c":"NETWORK",  "id":4648601, "ctx":"main","msg":"Implicit TCP FastOpen unavailable. If TCP FastOpen is required, set tcpFastOpenServer, tcpFastOpenClient, and tcpFastOpenQueueSize."}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.074+00:00"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"main","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"TenantMigrationDonorService","namespace":"config.tenantMigrationDonors"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.074+00:00"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"main","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"TenantMigrationRecipientService","namespace":"config.tenantMigrationRecipients"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.074+00:00"},"s":"I",  "c":"REPL",     "id":5123008, "ctx":"main","msg":"Successfully registered PrimaryOnlyService","attr":{"service":"ShardSplitDonorService","namespace":"config.tenantSplitDonors"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.074+00:00"},"s":"I",  "c":"CONTROL",  "id":5945603, "ctx":"main","msg":"Multi threading initialized"}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.074+00:00"},"s":"I",  "c":"CONTROL",  "id":4615611, "ctx":"initandlisten","msg":"MongoDB starting","attr":{"pid":1,"port":27017,"dbPath":"/data/db","architecture":"64-bit","host":"19e561b57f74"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.074+00:00"},"s":"I",  "c":"CONTROL",  "id":23403,   "ctx":"initandlisten","msg":"Build Info","attr":{"buildInfo":{"version":"6.0.5","gitVersion":"c9a99c120371d4d4c52cbb15dac34a36ce8d3b1d","openSSLVersion":"OpenSSL 3.0.2 15 Mar 2022","modules":[],"allocator":"tcmalloc","environment":{"distmod":"ubuntu2204","distarch":"x86_64","target_arch":"x86_64"}}}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.074+00:00"},"s":"I",  "c":"CONTROL",  "id":51765,   "ctx":"initandlisten","msg":"Operating System","attr":{"os":{"name":"Ubuntu","version":"22.04"}}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.074+00:00"},"s":"I",  "c":"CONTROL",  "id":21951,   "ctx":"initandlisten","msg":"Options set by command line","attr":{"options":{"net":{"bindIp":"*"},"security":{"authorization":"enabled"}}}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.075+00:00"},"s":"I",  "c":"STORAGE",  "id":22270,   "ctx":"initandlisten","msg":"Storage engine to use detected by data files","attr":{"dbpath":"/data/db","storageEngine":"wiredTiger"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.075+00:00"},"s":"I",  "c":"STORAGE",  "id":22297,   "ctx":"initandlisten","msg":"Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem","tags":["startupWarnings"]}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.075+00:00"},"s":"I",  "c":"STORAGE",  "id":22315,   "ctx":"initandlisten","msg":"Opening WiredTiger","attr":{"config":"create,cache_size=7454M,session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,remove=true,path=journal,compressor=snappy),builtin_extension_config=(zstd=(compression_level=6)),file_manager=(close_idle_time=600,close_scan_interval=10,close_handle_minimum=2000),statistics_log=(wait=0),json_output=(error,message),verbose=[recovery_progress:1,checkpoint_progress:1,compact_progress:1,backup:0,checkpoint:0,compact:0,evict:0,history_store:0,recovery:0,rts:0,salvage:0,tiered:0,timestamp:0,transaction:0,verify:0,log:0],"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.994+00:00"},"s":"I",  "c":"STORAGE",  "id":4795906, "ctx":"initandlisten","msg":"WiredTiger opened","attr":{"durationMillis":919}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:29.994+00:00"},"s":"I",  "c":"RECOVERY", "id":23987,   "ctx":"initandlisten","msg":"WiredTiger recoveryTimestamp","attr":{"recoveryTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:30.023+00:00"},"s":"I",  "c":"NETWORK",  "id":4915702, "ctx":"initandlisten","msg":"Updated wire specification","attr":{"oldSpec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":17},"incomingInternalClient":{"minWireVersion":0,"maxWireVersion":17},"outgoing":{"minWireVersion":6,"maxWireVersion":17},"isInternalClient":true},"newSpec":{"incomingExternalClient":{"minWireVersion":0,"maxWireVersion":17},"incomingInternalClient":{"minWireVersion":17,"maxWireVersion":17},"outgoing":{"minWireVersion":17,"maxWireVersion":17},"isInternalClient":true}}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:30.023+00:00"},"s":"I",  "c":"REPL",     "id":5853300, "ctx":"initandlisten","msg":"current featureCompatibilityVersion value","attr":{"featureCompatibilityVersion":"6.0","context":"startup"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:30.023+00:00"},"s":"I",  "c":"STORAGE",  "id":5071100, "ctx":"initandlisten","msg":"Clearing temp directory"}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:30.025+00:00"},"s":"I",  "c":"CONTROL",  "id":20536,   "ctx":"initandlisten","msg":"Flow Control is enabled on this deployment"}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:30.025+00:00"},"s":"I",  "c":"FTDC",     "id":20625,   "ctx":"initandlisten","msg":"Initializing full-time diagnostic data capture","attr":{"dataDirectory":"/data/db/diagnostic.data"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:30.028+00:00"},"s":"I",  "c":"REPL",     "id":6015317, "ctx":"initandlisten","msg":"Setting new configuration state","attr":{"newState":"ConfigReplicationDisabled","oldState":"ConfigPreStart"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:30.028+00:00"},"s":"I",  "c":"STORAGE",  "id":22262,   "ctx":"initandlisten","msg":"Timestamp monitor starting"}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:30.029+00:00"},"s":"I",  "c":"NETWORK",  "id":23015,   "ctx":"listener","msg":"Listening on","attr":{"address":"/tmp/mongodb-27017.sock"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:30.029+00:00"},"s":"I",  "c":"NETWORK",  "id":23015,   "ctx":"listener","msg":"Listening on","attr":{"address":"0.0.0.0"}}
+[36mtodo-backend-mongo-1  | [0m{"t":{"$date":"2023-05-02T19:47:30.029+00:00"},"s":"I",  "c":"NETWORK",  "id":23016,   "ctx":"listener","msg":"Waiting for connections","attr":{"port":27017,"ssl":"off"}}
+^CGracefully stopping... (press Ctrl+C again to force)
+Aborting on container exit...
+[1A[1B[0G[?25l[+] Running 0/0
+ ⠋ Container todo-backend-mongo-1  Stopping                                              [34m0.1s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ ⠙ Container todo-backend-mongo-1  Stopping                                              [34m0.2s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ ⠹ Container todo-backend-mongo-1  Stopping                                              [34m0.3s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ ⠸ Container todo-backend-mongo-1  Stopping                                              [34m0.4s [0m
+[?25h[1A[1A[0G[?25l[34m[+] Running 1/1[0m
+ [32m✔[0m Container todo-backend-mongo-1  [32mStopped[0m                                               [34m0.4s [0m
+[?25hcanceled
+[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[00m$ docker compose -f docker-compose.dev.yml up -d
+[?2004l[1A[1B[0G[?25l[+] Running 0/0
+ ⠿ Container todo-backend-mongo-1  Starting                                              [34m0.1s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ ⠿ Container todo-backend-mongo-1  Starting                                              [34m0.2s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ ⠿ Container todo-backend-mongo-1  Starting                                              [34m0.3s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ ⠿ Container todo-backend-mongo-1  Starting                                              [34m0.4s [0m
+[?25h[1A[1A[0G[?25l[34m[+] Running 1/1[0m
+ [32m✔[0m Container todo-backend-mongo-1  [32mStarted[0m                                               [34m0.4s [0m
+[?25h[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[00m$ docker exec [K[K[K[K[K[K[K[K[K[K[K[Kdocker ps
+[?2004lCONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+19e561b57f74   mongo     "docker-entrypoint.s…"   41 seconds ago   Up 22 seconds   0.0.0.0:3456->27017/tcp, :::3456->27017/tcp   todo-backend-mongo-1
+[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[00m$ docker exec 0[K-it todo-backend-mongo-1 bash
+[?2004l[?2004hroot@19e561b57f74:/# mongo -u root -p example
+[?2004lbash: mongo: command not found
+[?2004hroot@19e561b57f74:/# mongosh
+[?2004l]0;mongosh mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	6451699d84a4e98cb3fa9916
+Connecting to:		[1m[32mmongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0[0m
+Using MongoDB:		6.0.5
+[1m[33mUsing Mongosh[0m:		1.8.0
+
+For mongosh info see: [1mhttps://docs.mongodb.com/mongodb-shell/[0m
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the [1mdisableTelemetry()[0m command.
+
+[1G[0J [1G[1G[0Jtest> [7Groot[1G[0Jtest> roo[10G[1G[0Jtest> ro[9G[1G[0Jtest> r[8G[1G[0Jtest> [7G
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+[1G[0Jtest> [7G
+[?2004hroot@19e561b57f74:/# mongosh -u root -p example
+[?2004l]0;mongosh mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	645169b83e6b3a3dac996ef9
+Connecting to:		[1m[32mmongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0[0m
+Using MongoDB:		6.0.5
+[1m[33mUsing Mongosh[0m:		1.8.0
+
+For mongosh info see: [1mhttps://docs.mongodb.com/mongodb-shell/[0m
+
+[1G[0J [1G[1m[33m------[0m
+   [1m[33mThe server generated these startup warnings when booting[0m
+   2023-05-02T19:47:47.053+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+[1m[33m------[0m
+
+[1m[33m------[0m
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+   
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+   
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+[1m[33m------[0m
+
+[1G[0Jtest> [7Gshow dbs
+[1madmin[0m         100.00 KiB
+[1mconfig[0m        108.00 KiB
+[1mlocal[0m          72.00 KiB
+[1mthe_database[0m   56.00 KiB
+[1G[0Jtest> [7Guse the [1G[0Jtest> use the[14G_database
+switched to db the_database
+[1G[0Jthe_database> [15Gshow collections
+[1mtodos[0m
+[1G[0Jthe_database> [15Gdb.todos.find()[1G[0Jthe_database> db.todos.find([29G{})
+[
+  {
+    _id: ObjectId("64514db543f9691a3c40b6ad"),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("64514db543f9691a3c40b6ae"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mtrue[39m
+  }
+]
+[1G[0Jthe_database> [15Gdb.todos.inst[1G[0Jthe_database> db.todos.ins[27GertOne()[1G[0Jthe_database> db.todos.insertOne([34G{[1G[0Jthe_database> db.todos.insertOne([34G<document>.[1G[0Jthe_database> db.todos.insertOne(<document>[44G/[1G[0Jthe_database> db.todos.insertOne(<document>[44G.[1G[0Jthe_database> db.todos.insertOne(<document>[44G,{text: '[1D[1G[0Jthe_database> db.todos.insertOne(<document>,{text: '[52G[1D[1G[0Jthe_database> db.todos.insertOne(<document>,{text: '[51G[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todos.insertOne(<document>,{text: '[45G[1D[1G[0Jthe_database> db.todos.insertOne(<document>,{text: '[44G[1D[1C[1C[1G[0Jthe_database> db.todos.insertOne(<document>,{text: '[45G[1C[1G[0Jthe_database> db.todos.insertOne(<document>,{text: '[46G[1G[0Jthe_database> db.todos.insertOne(<document>,text: '[45G[1G[0Jthe_database> db.todos.insertOne(<document>text: '[44G[1G[0Jthe_database> db.todos.insertOne(<documenttext: '[43G[1G[0Jthe_database> db.todos.insertOne(<documentext: '[42G[1G[0Jthe_database> db.todos.insertOne(<documetext: '[41G[1G[0Jthe_database> db.todos.insertOne(<documtext: '[40G[1G[0Jthe_database> db.todos.insertOne(<docutext: '[39G[1G[0Jthe_database> db.todos.insertOne(<doctext: '[38G[1G[0Jthe_database> db.todos.insertOne(<dotext: '[37G[1G[0Jthe_database> db.todos.insertOne(<dtext: '[36G[1G[0Jthe_database> db.todos.insertOne(<text: '[35G[1G[0Jthe_database> db.todos.insertOne(text: [32m'[39m[34G[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m'[39m[35G[1C[1C[1C[1C[1C[1C[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m'[39m[41G[1C[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m'[39m[42G[32m:[39m[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m'[39m[42G[32mI[39m[32mn[39m[32mc[39m[32mr[39m[32me[39m[32ma[39m[32ms[39m[32me[39m [32mt[39m[32mh[39m[32me[39m [32mn[39m[32mu[39m[32mm[39m[32mb[39m[32me[39m[32mr[39m [32mo[39m[32mf[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m[32ms[39m [32mi[39m[32mn[39m [32mm[39m[32my[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m[32mb[39m[32me[39m[32ml[39m[32mt[39m[32m'[39m, d[36mdo[39mdone[33mdone[39m: [1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m'Increase the number of tools in my toolbelt'[39m, [33mdone[39m: f [1Gals[33mfalse[39m})
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId("64516a693c55448d935a4703")
+}
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m'Increase the number of tools in my toolbelt'[39m, [33mdone[39m: [33mfalse[39m})[7G[1A[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId("64514db543f9691a3c40b6ad"),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("64514db543f9691a3c40b6ae"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("64516a693c55448d935a4703"),
+    text: [32m'Increase the number of tools in my toolbelt'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15G
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+[1G[0Jthe_database> [15G
+[?2004hroot@19e561b57f74:/# exit
+[?2004lexit
+[?2004h]0;nnewdorf@pop-os: ~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[01;32mnnewdorf@pop-os[00m:[01;34m~/Documents/Programming/JS/full-stack-open/part12/part12-containers-applications/todo-app/todo-backend[00m$ exit
+[?2004lexit
+
+Script done on 2023-05-02 15:56:35-04:00 [COMMAND_EXIT_CODE="0"]
